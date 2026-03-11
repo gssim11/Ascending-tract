@@ -16,7 +16,8 @@ import {
   ArrowRight, 
   ArrowDown, 
   Flame, 
-  Zap 
+  Zap,
+  BookOpen
 } from 'lucide-react';
 
 export default function NeuroanatomyInfographic() {
@@ -58,9 +59,10 @@ export default function NeuroanatomyInfographic() {
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
             몸감각 상행로 및 통증 기전
           </h1>
-          <p className="text-lg md:text-xl text-blue-200 font-medium mb-2">
-            신경해부학 및 신경계물리치료중재학(실습)
-          </p>
+          <div className="flex items-center justify-center gap-2 text-lg md:text-xl text-blue-200 font-medium mb-2">
+            <BookOpen size={20} className="text-blue-300" />
+            <p>신경해부학 및 신경계물리치료중재학(실습)</p>
+          </div>
           <div className="inline-block mt-4 px-5 py-2 bg-slate-800 rounded-full border border-slate-700 shadow-md">
             <p className="text-slate-300 text-sm font-semibold tracking-wide">
               안산대학교 물리치료학과 심경섭 교수
@@ -324,6 +326,12 @@ export default function NeuroanatomyInfographic() {
         </div>
       </main>
 
+      <footer className="bg-slate-900 py-8 text-center mt-12">
+        <p className="text-slate-400 text-sm">© 2026 Ansan University, Dept. of Physical Therapy. Prof. Sim Gyeongseop.</p>
+        <p className="text-slate-500 text-xs mt-2">Designed for Clinical Reasoning & Academic Excellence</p>
+      </footer>
+
     </div>
   );
 }
+```
