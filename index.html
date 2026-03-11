@@ -1,0 +1,329 @@
+import React, { useEffect } from 'react';
+import { 
+  Brain, 
+  Network, 
+  Hand, 
+  CornerRightUp, 
+  GitBranch, 
+  Check, 
+  Layers, 
+  Activity, 
+  ArrowUpDown, 
+  DoorOpen, 
+  Shuffle, 
+  User, 
+  Shield, 
+  ArrowRight, 
+  ArrowDown, 
+  Flame, 
+  Zap 
+} from 'lucide-react';
+
+export default function NeuroanatomyInfographic() {
+  // Inject Pretendard font and custom animations
+  useEffect(() => {
+    const styleId = 'infographic-custom-styles';
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.innerHTML = `
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css');
+        .infographic-container { font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif; }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }, []);
+
+  return (
+    <div className="infographic-container bg-slate-50 text-slate-800 antialiased min-h-screen pb-20 overflow-x-hidden">
+      
+      {/* Header Section */}
+      <header className="bg-slate-900 text-white pt-16 pb-24 px-4 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 flex justify-center items-center pointer-events-none">
+          <Network size={400} />
+        </div>
+        <div className="max-w-5xl mx-auto relative z-10 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/20 text-blue-300 mb-6 border border-blue-400/30 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+            <Brain size={32} />
+          </div>
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+            몸감각 상행로 및 통증 기전
+          </h1>
+          <p className="text-lg md:text-xl text-blue-200 font-medium mb-2">
+            신경해부학 및 신경계물리치료중재학(실습)
+          </p>
+          <div className="inline-block mt-4 px-5 py-2 bg-slate-800 rounded-full border border-slate-700 shadow-md">
+            <p className="text-slate-300 text-sm font-semibold tracking-wide">
+              안산대학교 물리치료학과 심경섭 교수
+            </p>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          {/* 1. 기계수용기 & 몸감각 상행로 */}
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-100">
+            <div className="absolute top-4 right-4 opacity-5 pointer-events-none">
+              <Hand size={120} />
+            </div>
+            <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-black">1</span>
+              피부 기계수용기 및 전달 경로
+            </h2>
+            
+            <div className="space-y-4 relative z-10">
+              {/* DCML */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 p-4 rounded-xl border-l-4 border-blue-500">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-blue-900">마이스너 / 메르켈 / 루피니 / 파치니</h3>
+                  <span className="text-xs font-bold bg-blue-200 text-blue-800 px-2.5 py-1 rounded shadow-sm">Aβ 섬유</span>
+                </div>
+                <p className="text-sm text-blue-800 mb-3">분별성 촉각, 진동, 압박</p>
+                <div className="text-sm font-semibold text-blue-700 flex items-center gap-1.5 bg-blue-100/50 w-fit px-3 py-1.5 rounded-md">
+                  <CornerRightUp size={16} /> 뒤기둥-안쪽섬유띠계 (DCML)
+                </div>
+              </div>
+
+              {/* ASTT */}
+              <div className="bg-gradient-to-br from-red-50 to-red-100/50 p-4 rounded-xl border-l-4 border-red-500">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-red-900">자유신경종말 (Free Nerve Ending)</h3>
+                  <span className="text-xs font-bold bg-red-200 text-red-800 px-2.5 py-1 rounded shadow-sm">Aδ, C 섬유</span>
+                </div>
+                <p className="text-sm text-red-800 mb-3">조잡촉각, 통증, 온도</p>
+                <div className="text-sm font-semibold text-red-700 flex items-center gap-1.5 bg-red-100/50 w-fit px-3 py-1.5 rounded-md">
+                  <CornerRightUp size={16} /> 척수시상로 (Spinothalamic Tract)
+                </div>
+              </div>
+
+              {/* Mixed */}
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-slate-800">모낭수용기 (Hair Follicle Receptor)</h3>
+                  <span className="text-xs font-bold bg-slate-200 text-slate-700 px-2.5 py-1 rounded shadow-sm">복합 채널</span>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">털의 미세한 움직임 감지. Aβ(DCML) 및 Aδ/C(척수시상로)를 모두 매개하는 듀얼 시스템.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* 2. DREZ 및 척수 내 주행 */}
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in delay-100 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-100">
+            <div className="absolute top-4 right-4 opacity-5 pointer-events-none">
+              <GitBranch size={120} />
+            </div>
+            <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm font-black">2</span>
+              뒤뿌리 진입부(DREZ) 분리 기전
+            </h2>
+
+            <div className="flex flex-col sm:flex-row gap-4 h-[calc(100%-3rem)] relative z-10">
+              {/* 내측 다발 */}
+              <div className="flex-1 bg-white border-2 border-indigo-50 rounded-xl p-5 flex flex-col shadow-sm">
+                <div className="text-center mb-5 pb-4 border-b border-indigo-100">
+                  <h3 className="font-bold text-indigo-900 mb-2">내측 다발 (Medial Stream)</h3>
+                  <span className="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-bold">굵은 섬유 (Ia, Ib, II, Aβ)</span>
+                </div>
+                <ul className="text-sm text-slate-600 space-y-4 flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <Check size={16} className="text-indigo-500 mt-0.5 shrink-0" strokeWidth={3} />
+                    <span className="leading-relaxed">척수 뒤뿔을 거치지 않고 <strong className="text-indigo-800">뒤기둥(Dorsal Column)</strong> 직행</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <Layers size={16} className="text-indigo-500 mt-0.5 shrink-0" strokeWidth={2.5} />
+                    <span className="leading-relaxed"><strong className="text-indigo-800">내측-외측 덧붙임 법칙:</strong><br/>하위 분절은 안쪽, 상위 분절은 바깥쪽에 축적</span>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* 외측 다발 */}
+              <div className="flex-1 bg-white border-2 border-rose-50 rounded-xl p-5 flex flex-col shadow-sm">
+                <div className="text-center mb-5 pb-4 border-b border-rose-100">
+                  <h3 className="font-bold text-rose-900 mb-2">외측 다발 (Lateral Stream)</h3>
+                  <span className="text-xs bg-rose-100 text-rose-700 px-3 py-1 rounded-full font-bold">가는 섬유 (Aδ, C)</span>
+                </div>
+                <ul className="text-sm text-slate-600 space-y-4 flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <Activity size={16} className="text-rose-500 mt-0.5 shrink-0" strokeWidth={3} />
+                    <span className="leading-relaxed">척수 외곽의 <strong className="text-rose-800">리사우어로(Lissauer's tract)</strong>로 진입</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <ArrowUpDown size={16} className="text-rose-500 mt-0.5 shrink-0" strokeWidth={2.5} />
+                    <span className="leading-relaxed">1~2분절 상하행 확산 후 아교질(SG) 연접. <br/>고유척수섬유 포함.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. 관문조절설 & 교차 */}
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in delay-200 lg:col-span-2 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-100">
+            <div className="absolute top-4 right-4 opacity-5 pointer-events-none">
+              <DoorOpen size={160} />
+            </div>
+            <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center text-sm font-black">3</span>
+              척수 내 교차 및 관문조절설 (Gate Control Theory)
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+              {/* 교차 기전 */}
+              <div className="bg-white rounded-xl p-5 border-2 border-teal-50 shadow-sm flex flex-col justify-center">
+                <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                  <Shuffle className="text-teal-600" size={20} /> 백색앞맞교차
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  통증 경로의 척수 내 교차는 1차 뉴런이 아닌, 뒤뿔에서 연접을 마친 <strong>투사 뉴런(2차 뉴런)</strong>의 축삭이 척수 중심관 앞쪽의 <strong className="text-teal-700 bg-teal-50 px-1 rounded">백색앞맞교차(Anterior White Commissure)</strong>를 가로질러 일어납니다.
+                </p>
+                <div className="text-xs text-slate-500 bg-slate-50 p-3 rounded-lg border border-slate-100 leading-relaxed">
+                  <strong className="text-slate-700">임상 의의:</strong> 척수공동증 발병 시 망토 모양 감각 소실의 근거
+                </div>
+              </div>
+
+              {/* 관문조절 모식도 */}
+              <div className="md:col-span-2 bg-gradient-to-br from-teal-50/50 to-teal-100/30 rounded-xl p-6 border border-teal-100 flex flex-col justify-center">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+                  
+                  {/* 시민 */}
+                  <div className="flex-1 bg-white p-4 rounded-xl border border-slate-200 shadow-sm w-full">
+                    <div className="w-12 h-12 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-3">
+                      <User size={24} />
+                    </div>
+                    <div className="font-bold text-sm text-slate-800">Aβ 섬유 (촉각)</div>
+                    <div className="text-xs font-medium text-blue-600 mt-1.5 bg-blue-50 py-1 rounded">"경찰 흥분시킴"</div>
+                  </div>
+
+                  {/* 제어 */}
+                  <div className="flex flex-col items-center px-2">
+                    <ArrowRight className="text-slate-300 my-1 hidden sm:block" size={20} />
+                    <div className="bg-teal-600 text-white px-5 py-3 rounded-xl shadow-md relative z-10 w-full sm:w-auto text-sm font-bold flex items-center gap-2">
+                      <Shield size={18} /> SG 억제성 뉴런
+                    </div>
+                    <ArrowDown className="text-teal-500 my-2" size={20} />
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-lg text-sm font-bold w-full sm:w-auto shadow-sm">
+                      통증 투사 차단 (과분극)
+                    </div>
+                  </div>
+
+                  {/* 도둑 */}
+                  <div className="flex-1 bg-white p-4 rounded-xl border border-slate-200 shadow-sm w-full">
+                    <div className="w-12 h-12 mx-auto bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-3">
+                      <Flame size={24} />
+                    </div>
+                    <div className="font-bold text-sm text-slate-800">Aδ, C 섬유 (통증)</div>
+                    <div className="text-xs font-medium text-red-600 mt-1.5 bg-red-50 py-1 rounded">"경찰 기능 억제"</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 4. CRPS 및 이질통 */}
+          <section className="bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-2xl shadow-lg p-6 md:p-8 fade-in delay-300 lg:col-span-2 border-l-4 border-amber-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <h2 className="text-xl font-bold text-amber-900 mb-2 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-amber-200 text-amber-700 flex items-center justify-center text-sm font-black"><Zap size={16} fill="currentColor"/></span>
+              병리적 통증 기전: 복합부위통증증후군(CRPS)과 이질통(Allodynia)
+            </h2>
+            <p className="text-sm text-amber-800 mb-6 font-medium">관문(Gate)이 부서진 중추감작(Central Sensitization) 상태의 3대 핵심 기전</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="bg-white/80 p-5 rounded-xl border border-amber-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-7 h-7 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="font-bold text-amber-900 leading-tight">탈억제<br/><span className="text-xs font-medium text-amber-700">(Disinhibition)</span></h3>
+                </div>
+                <p className="text-sm text-amber-800 leading-relaxed">
+                  지속적 유해 자극으로 SG 억제성 개재뉴런이 기능을 상실. <strong className="text-amber-900 bg-amber-100 px-1">Aβ의 무해한 촉각이 통증 투사 뉴런(WDR)을 직접 흥분</strong>시킵니다.
+                </p>
+              </div>
+
+              <div className="bg-white/80 p-5 rounded-xl border border-amber-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-7 h-7 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="font-bold text-amber-900 leading-tight">해부학적 재배선<br/><span className="text-xs font-medium text-amber-700">(A-fiber Sprouting)</span></h3>
+                </div>
+                <p className="text-sm text-amber-800 leading-relaxed">
+                  깊은 층의 Aβ 섬유가 얕은 층(통각 구역)으로 자라 들어가 <strong className="text-amber-900 bg-amber-100 px-1">물리적인 교차 혼선(Crosstalk)</strong>을 형성합니다.
+                </p>
+              </div>
+
+              <div className="bg-white/80 p-5 rounded-xl border border-amber-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-7 h-7 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="font-bold text-amber-900 leading-tight">교감-감각 결합<br/><span className="text-xs font-medium text-amber-700">(Sympathetic Coupling)</span></h3>
+                </div>
+                <p className="text-sm text-amber-800 leading-relaxed">
+                  감각 수용기에 <strong className="text-amber-900 bg-amber-100 px-1">비정상적 알파-아드레날린 수용체가 발현</strong>되어, 교감신경의 노르에피네프린에 의해 자발통이 유발됩니다.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* 5. 척수소뇌로 */}
+          <section className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl shadow-lg p-6 md:p-8 fade-in delay-400 lg:col-span-2 border-l-4 border-green-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <h2 className="text-xl font-bold text-green-900 mb-6 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-lg bg-green-200 text-green-800 flex items-center justify-center text-sm font-black"><Activity size={16} /></span>
+              무의식적 고유수용성감각: 척수소뇌로(Spinocerebellar Tract)
+            </h2>
+            
+            <div className="overflow-x-auto pb-2">
+              <table className="w-full text-sm text-left border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-green-200">
+                <thead className="bg-green-100 text-green-900">
+                  <tr>
+                    <th className="p-4 font-bold border-b border-green-200 w-1/4">구분</th>
+                    <th className="p-4 font-bold border-b border-green-200 text-center w-3/8">뒤척수소뇌로 (DSCT)</th>
+                    <th className="p-4 font-bold border-b border-green-200 text-center w-3/8">앞척수소뇌로 (ASCT)</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-700">
+                  <tr className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td className="p-4 font-semibold text-slate-800 bg-slate-50/50">전달 정보</td>
+                    <td className="p-4 text-center">말초 근육/관절의 실제 상태 보고</td>
+                    <td className="p-4 text-center font-bold text-green-700 bg-green-50/30">척수 내부의 운동 명령 진행 상황 <br/><span className="text-xs font-normal">(Efference copy)</span></td>
+                  </tr>
+                  <tr className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td className="p-4 font-semibold text-slate-800 bg-slate-50/50">척수 내 교차</td>
+                    <td className="p-4 text-center"><span className="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md text-xs font-bold border border-slate-200">교차 안 함 (Uncrossed)</span></td>
+                    <td className="p-4 text-center"><span className="bg-green-100 text-green-800 px-3 py-1.5 rounded-md text-xs font-bold border border-green-200">백색앞맞교차 통해 반대측 상행</span></td>
+                  </tr>
+                  <tr className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td className="p-4 font-semibold text-slate-800 bg-slate-50/50">소뇌 진입 관문</td>
+                    <td className="p-4 text-center">아래소뇌다리 (ICP)</td>
+                    <td className="p-4 text-center">위소뇌다리 (SCP)</td>
+                  </tr>
+                  <tr className="hover:bg-slate-50 transition-colors">
+                    <td className="p-4 font-semibold text-slate-800 bg-slate-50/50">이중 교차 기전</td>
+                    <td className="p-4 text-center text-slate-400">-</td>
+                    <td className="p-4 text-center font-bold text-green-700 bg-green-50/30">소뇌 백색질 내에서 다시 동측으로 재교차</td>
+                  </tr>
+                </tbody>
+                <tfoot className="bg-green-600 text-white">
+                  <tr>
+                    <td className="p-4 font-bold border-t border-green-700">결과적 지배</td>
+                    <td colSpan="2" className="p-4 text-center font-black text-lg tracking-wide border-t border-green-700">
+                      동측 지배 (Ipsilateral Control)
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </section>
+
+        </div>
+      </main>
+
+    </div>
+  );
+}
